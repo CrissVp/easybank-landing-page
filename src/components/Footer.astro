@@ -1,0 +1,188 @@
+---
+import Button from './Button.astro';
+
+import Logo from '/assets/logo.svg?raw';
+import Facebook from '/icons/icon-facebook.svg?raw';
+import Youtube from '/icons/icon-youtube.svg?raw';
+import Twitter from '/icons/icon-twitter.svg?raw';
+import Pinterest from '/icons/icon-pinterest.svg?raw';
+import Instagram from '/icons/icon-instagram.svg?raw';
+---
+
+<footer id='contact_section' class='footer'>
+	<div class='footer__logo'>
+		<Fragment set:html={Logo} />
+	</div>
+	<div class='footer__socials'>
+		<button aria-label='Facebook Link' class='social'>
+			<Fragment set:html={Facebook} />
+		</button>
+		<button aria-label='Youtube Link' class='social'>
+			<Fragment set:html={Youtube} />
+		</button>
+		<button aria-label='Twitter Link' class='social'>
+			<Fragment set:html={Twitter} />
+		</button>
+		<button aria-label='Pinterest Link' class='social'>
+			<Fragment set:html={Pinterest} />
+		</button>
+		<button aria-label='Instagram Link' class='social'>
+			<Fragment set:html={Instagram} />
+		</button>
+	</div>
+	<div class='footer__links'>
+		<a href='#about_section'>About Us</a>
+		<a href='#contact_section'>Contact</a>
+		<a href='#blog_section'>Blog</a>
+		<a href='#'>Careers</a>
+		<a href='#'>Support</a>
+		<a href='#'>Privacy Policy</a>
+	</div>
+	<div class='footer__button'>
+		<Button />
+	</div>
+	<div class='footer__policy'>
+		<p>© Easybank. All Rights Reserved</p>
+	</div>
+	<div class='footer__attribution'>
+		Challenge by <a href='https://www.frontendmentor.io?ref=challenge' target='_blank'
+			>Frontend Mentor</a
+		>. Coded by <a href='https://github.com/CrissVp' target='_blank'>Cristian Pérez</a>.
+	</div>
+</footer>
+
+<style>
+	.footer {
+		gap: 32px;
+		display: flex;
+		padding: 32px 20px;
+		flex-direction: column;
+		align-items: center;
+		background-color: var(--dark-blue);
+	}
+
+	.footer__logo {
+		svg > g > path {
+			fill: var(--white);
+		}
+	}
+
+	.footer__socials {
+		gap: 14px;
+		display: flex;
+	}
+
+	.social:hover {
+		cursor: pointer;
+
+		svg > path {
+			fill: var(--lime-green);
+		}
+	}
+
+	.footer__links {
+		gap: 14px;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.footer__links a {
+		font-weight: 300;
+		color: var(--light-grayish-blue);
+	}
+
+	.footer__policy p {
+		font-size: 16px;
+		color: var(--grayish-blue);
+	}
+
+	.footer__attribution {
+		font-size: 16px;
+		line-height: 140%;
+		text-align: center;
+		color: var(--grayish-blue);
+	}
+
+	.footer__attribution a {
+		color: var(--light-grayish-blue);
+	}
+
+	.footer a:hover {
+		color: var(--lime-green);
+		text-decoration: underline;
+	}
+
+	@media (min-width: 768px) {
+		.footer {
+			gap: 24px;
+			display: grid;
+			justify-items: center;
+			grid-template-areas: 'logo  links' 'socials policy' 'button attribution';
+		}
+
+		.footer__logo {
+			grid-area: logo;
+		}
+
+		.footer__socials {
+			grid-area: socials;
+		}
+
+		.footer__links {
+			grid-area: links;
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		.footer__button {
+			grid-area: button;
+		}
+
+		.footer__policy {
+			text-align: center;
+			grid-area: policy;
+		}
+
+		.footer__attribution {
+			grid-area: attribution;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.footer {
+			row-gap: 12px;
+			column-gap: 64px;
+			justify-items: start;
+			grid-template-areas: 'logo links button' 'socials links policy' 'attribution attribution attribution';
+		}
+
+		.footer__links {
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.footer__links a {
+			width: calc(50% - 7px);
+		}
+
+		.footer__policy,
+		.footer__button {
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.footer__attribution {
+			width: 100%;
+			text-align: center;
+			padding-top: 24px;
+		}
+	}
+
+	@media (min-width: 1440px) {
+		.footer {
+			padding-inline: calc((100% - 1400px) / 2);
+		}
+	}
+</style>

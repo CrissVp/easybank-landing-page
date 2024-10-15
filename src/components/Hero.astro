@@ -1,0 +1,172 @@
+---
+import { Image } from 'astro:assets';
+import Button from './Button.astro';
+---
+
+<section id='home_section' class='hero'>
+	<div class='hero__image'>
+		<Image
+			src='/easybank-landing-page/backgrounds/bg-intro-mobile.svg'
+			class='image__bg bg--mobile'
+			alt='Mobile Background'
+			height={420}
+			width={640}
+		/>
+		<Image
+			src='/easybank-landing-page/backgrounds/bg-intro-desktop.svg'
+			class='image__bg bg--desktop'
+			alt='Desktop Background'
+			height={600}
+			width={600}
+		/>
+		<Image
+			src='/easybank-landing-page/assets/image-mockups.png'
+			class='image__intro'
+			alt='Mockups'
+			height={720}
+			width={800}
+		/>
+	</div>
+	<div class='hero__content'>
+		<h1>Next generation digital banking</h1>
+		<p>
+			Take your financial life online. Your Easybank account will be a one-stop-shop for spending,
+			saving, budgeting, investing, and much more.
+		</p>
+		<Button />
+	</div>
+</section>
+
+<style>
+	.hero {
+		gap: 32px;
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 64px;
+		background-color: var(--very-light-gray);
+	}
+
+	.hero__image {
+		position: relative;
+		max-height: 420px;
+
+		.image__bg {
+			width: 100%;
+			max-height: 420px;
+		}
+
+		.bg--desktop {
+			display: none;
+		}
+
+		.image__intro {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: bottom;
+		}
+	}
+
+	.hero__content {
+		gap: 32px;
+		display: flex;
+		text-align: center;
+		align-items: center;
+		flex-direction: column;
+		padding-inline: 20px;
+	}
+
+	.hero__content h1 {
+		font-size: 36px;
+		font-weight: 400;
+		color: var(--dark-blue);
+	}
+
+	.hero__content p {
+		font-size: 18px;
+		font-weight: 300;
+		line-height: 140%;
+		color: var(--grayish-blue);
+	}
+
+	@media (min-width: 640px) {
+		.hero {
+			height: 400px;
+			padding-bottom: 0;
+			flex-direction: row-reverse;
+
+			& > * {
+				flex: 1;
+			}
+		}
+
+		.hero__image {
+			.bg--desktop {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+				object-position: left bottom;
+			}
+
+			.bg--mobile {
+				display: none;
+			}
+
+			.image__intro {
+				z-index: 5;
+				height: auto;
+				min-height: 400px;
+				max-height: 460px;
+				object-position: left bottom;
+			}
+		}
+
+		.hero__content {
+			gap: 24px;
+			text-align: start;
+			padding-block: 32px;
+			align-items: flex-start;
+			justify-content: center;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.hero {
+			height: 600px;
+		}
+
+		.hero__image {
+			max-height: unset;
+
+			.image__bg {
+				max-height: unset;
+			}
+
+			.image__intro {
+				left: unset;
+				right: 0;
+				width: 80%;
+				min-height: 680px;
+				max-height: 720px;
+			}
+		}
+
+		.hero__content {
+			max-width: 600px;
+		}
+	}
+
+	@media (min-width: 1440px) {
+		.hero {
+			padding-left: calc((100% - 1400px) / 2);
+		}
+
+		.hero__content {
+			padding-inline: unset;
+		}
+	}
+</style>

@@ -1,0 +1,180 @@
+---
+import { Image } from 'astro:assets';
+import Button from './Button.astro';
+---
+
+<header>
+	<nav class='nav'>
+		<div class='nav__logo'>
+			<Image src='/easybank-landing-page/assets/logo.svg' alt='Logo' height={25} width={120} />
+		</div>
+
+		<div class='nav__menu'>
+			<button class='menu__button'>
+				<Image
+					src='/easybank-landing-page/icons/icon-hamburger.svg'
+					alt='Menu Button'
+					height={18}
+					width={22}
+				/>
+			</button>
+
+			<button class='menu__close'>
+				<Image
+					src='/easybank-landing-page/icons/icon-close.svg'
+					alt='Close Button'
+					height={20}
+					width={20}
+				/>
+			</button>
+
+			<div class='menu__links'>
+				<a href='#home_section'>Home</a>
+				<a href='#about_section'>About</a>
+				<a href='#contact_section'>Contact</a>
+				<a href='#blog_section'>Blog</a>
+				<a href='#'>Careers</a>
+			</div>
+		</div>
+
+		<div class='nav__button'>
+			<Button />
+		</div>
+	</nav>
+</header>
+
+<script>
+	const $navMenu = document.querySelector('.nav__menu');
+	const $menuButton = document.querySelectorAll('.nav__menu button');
+
+	$menuButton.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			$navMenu.classList.toggle('nav__menu--visible');
+		});
+	});
+</script>
+
+<style>
+	header {
+		width: 100%;
+		top: 0;
+		z-index: 10;
+		position: sticky;
+		padding-inline: 20px;
+		background-color: var(--white);
+	}
+
+	.nav {
+		height: 70px;
+		display: flex;
+		margin: 0 auto;
+		max-width: 1400px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.nav > * {
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.nav__menu .menu__button {
+		display: block;
+	}
+
+	.nav__menu .menu__close {
+		display: none;
+	}
+
+	.nav__menu--visible .menu__close {
+		display: block;
+	}
+
+	.nav__menu--visible .menu__button {
+		display: none;
+	}
+
+	.nav__menu--visible .menu__links {
+		scale: 1;
+		opacity: 1;
+		display: flex;
+
+		@starting-style {
+			opacity: 0;
+			scale: 0;
+		}
+	}
+
+	.menu__links {
+		gap: 20px;
+		scale: 0;
+		left: 20px;
+		right: 20px;
+		opacity: 0;
+		z-index: 10;
+		display: none;
+		padding: 20px;
+		position: absolute;
+		top: calc(100% + 20px);
+		flex-direction: column;
+		align-items: center;
+		border-radius: 6px;
+		background-color: var(--white);
+
+		transition:
+			scale 0.3s ease,
+			opacity 0.3s ease,
+			display 0.3s allow-discrete;
+	}
+
+	.menu__links a {
+		font-weight: 700;
+	}
+
+	.nav .nav__button {
+		display: none;
+	}
+
+	@media (min-width: 640px) {
+		.menu__links,
+		.nav__menu--visible {
+			top: unset;
+			scale: 1;
+			opacity: 1;
+			padding: 0;
+			right: unset;
+			left: unset;
+			height: 100%;
+			display: flex;
+			position: relative;
+			flex-direction: row;
+			transition: unset;
+		}
+
+		.nav__menu .menu__button,
+		.nav__menu--visible .menu__close {
+			display: none;
+		}
+
+		.menu__links a {
+			height: 100%;
+			display: flex;
+			font-weight: 400;
+			align-items: center;
+			color: var(--grayish-blue);
+			border-bottom: 2px solid transparent;
+		}
+
+		.menu__links a:hover {
+			color: var(--dark-blue);
+			border-bottom-color: var(--lime-green);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.nav .nav__button {
+			display: flex;
+		}
+	}
+</style>

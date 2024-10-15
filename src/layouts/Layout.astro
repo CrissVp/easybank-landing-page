@@ -1,0 +1,71 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='Astro description' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		<link rel='icon' type='image/svg+xml' href='/favicon-32x32.png' />
+		<link rel='preconnect' href='https://fonts.googleapis.com' />
+		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+		<link
+			href='https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap'
+			rel='stylesheet'
+		/>
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		/* Primary */
+		--dark-blue: hsl(233, 26%, 24%);
+		--lime-green: hsl(136, 65%, 51%);
+		--bright-cyan: hsl(192, 70%, 51%);
+
+		/* Neutral */
+		--grayish-blue: hsl(233, 8%, 62%);
+		--light-grayish-blue: hsl(220, 16%, 96%);
+		--very-light-gray: hsl(0, 0%, 98%);
+		--white: hsl(0, 0%, 100%);
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	button {
+		border: none;
+		outline: none;
+		color: var(--dark-blue);
+		background-color: transparent;
+		font-family: 'Public Sans', sans-serif;
+	}
+
+	a {
+		text-decoration: none;
+		color: var(--dark-blue);
+	}
+
+	html {
+		background: var(--light-grayish-blue);
+		font-family: 'Public Sans', sans-serif;
+		font-optical-sizing: auto;
+		scroll-behavior: smooth;
+		scroll-padding-top: 70px;
+		font-style: normal;
+		font-size: 18px;
+	}s
+</style>
